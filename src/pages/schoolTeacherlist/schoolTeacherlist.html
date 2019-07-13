@@ -1,0 +1,61 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+  <div class="login-g das">
+     Teacher School list
+ <a href="" (click)="teacherList()">Skip</a>
+  </div>
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- logo -->
+
+<!-- logo code -->
+
+<ion-content >
+<div class="back-c">
+<!-- content -->
+<div class="list-school ">
+<h3> {{school_names}} </h3>
+<h5>{{ address }}</h5>
+  <button ion-button color="orange"  class="button-block  save-btn  invite-btn" (click)="chooseSchool()">
+    Join this School
+ </button>
+ <p>All Teacher ({{teacher_len}})</p>
+<div>
+</div>
+</div>
+
+<div class="m-school">
+ <!--listing code here -->
+<div class="list-margin">
+<div class="add-c  content-p">
+  <div>
+<a href="">
+<ion-grid> 
+  <ion-list *ngFor="let teacherlist of schoolTeacher">
+    <ion-item>
+      <ion-thumbnail item-start>
+      <img src="assets/imgs/event_management.png">  
+      </ion-thumbnail>
+      <h2>{{teacherlist.name}}</h2>
+      <p>{{teacherlist.email}}</p>
+    </ion-item>
+  </ion-list>
+  <button ion-button (click)="teacherList()">I am not in School</button>
+</ion-grid> 
+</a>
+</div>
+</div>
+</div> 
+  <!--listing code end -->
+</div> 
+
+
+
+<!-- content end-->
+</div>
+</ion-content>
+
+

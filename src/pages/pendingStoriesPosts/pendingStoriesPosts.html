@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Class Genie
+       
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content>
+
+  <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+      </ion-refresher>
+      <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh..."
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  
+<div class="back-c">
+
+<div class="col col-100 no_post" *ngIf="showmsg==false">
+   <p style="" >No post available now..</p> 
+   </div>
+
+<div class="m-school" *ngFor="let client of items; let i = index">
+  
+<div class=" invite-f  story-h  scholl-list ">
+  <div class="border-b">
+<ion-grid>
+  <ion-row>
+  <ion-col col-9>
+    <img src="/assets/imgs/status_profile.png?{{randNO}}" *ngIf="client.image_name==''">
+    <img src="{{imagePath}}profile_image/{{client.image_name}}?{{randNO}}" *ngIf="client.image_name!=''">
+    <h3>{{client.class_name}}</h3>
+     <div class="story-c">
+    <p><ion-icon name="arrow-round-forward"></ion-icon>  {{client.username}}</p>
+  </div>
+  </ion-col>
+  <ion-col col-3>
+   <div class="r-icon">
+   {{client.date}}
+    </div>
+  </ion-col>
+  </ion-row>
+ </ion-grid>
+
+ <div class="border-b1">
+  <ion-grid>
+    <ion-row>
+    <ion-col col-12>
+    <div class="head-story">
+      <h3>{{client.message}}</h3>
+    </div>
+    <div class="like-section">
+   
+      <div class="btn-as" *ngIf='client.status==0'> <button ion-button outline item-end  class="send-btn" (click)="approve_story(client.id)" tappable>  <ion-icon name="time"></ion-icon>Approve</button> <button ion-button outline item-end  class="Delete-btn" (click)="unapprove_story(client.id)" > <ion-icon name="trash"></ion-icon>Unapprove</button></div>
+
+    </div>
+   </ion-col>
+    </ion-row>
+   </ion-grid>
+  </div>
+
+
+
+
+</div>
+
+</div>
+</div>
+</div>
+</ion-content>
+

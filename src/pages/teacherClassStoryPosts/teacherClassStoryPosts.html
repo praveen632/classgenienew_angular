@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Class Genie
+       
+    </ion-title>
+
+  </ion-navbar>
+<ion-searchbar  [(ngModel)]="searchTerm" (ionInput)="getAllPostsearchStories($event)" placeholder=""></ion-searchbar>
+
+</ion-header>
+
+
+
+<ion-content>
+
+  <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+      </ion-refresher>
+      <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh..."
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  
+<div class="back-c">
+<div class="m-school">
+<div class=" invite-f  story-h">
+<a class=""  (click)="addpost();" tappable>
+<ion-grid>
+  <ion-row>
+  <ion-col col-9>
+    <ion-icon name="contact"></ion-icon> 
+    <h3>What's happening in your classroom?</h3>
+  </ion-col>
+  <ion-col col-3>
+   <div class="r-icon">
+   <ion-icon name="camera"></ion-icon>
+    </div>
+  </ion-col>
+  </ion-row>
+ </ion-grid>
+</a>
+
+</div>
+</div> 
+
+<div class="clear"></div>
+
+<div class="col col-100 no_post" *ngIf="showmsg==false">
+   <p style="" >No post available now..</p> 
+   </div>
+
+<div class="m-school" *ngFor="let client of items ; let i = index">
+  
+<div class=" invite-f  story-h  scholl-list ">
+  <div class="border-b">
+<ion-grid>
+  <ion-row>
+  <ion-col col-9>
+    <img src="{{client.imgURI}}">
+    <h3>{{client.username}}</h3>
+     <h3 *ngIf="client.teacher_name.name!=''"> {{client.teacher_name.name}}</h3>
+    <div class="story-c">
+    <p><ion-icon name="arrow-round-forward"></ion-icon>  {{client.class_name.class_name}}&nbsp;&nbsp;({{client.class_name.grade}}) </p>
+  </div>
+  </ion-col>
+  <ion-col col-3>
+   <div class="r-icon">
+   {{client.date}}
+    </div>
+  </ion-col>
+  </ion-row>
+ </ion-grid>
+</div>
+<div class="border-b1">
+<ion-grid>
+  <ion-row>
+  <ion-col col-12>
+  <div class="head-story">
+      <img class="full-image" *ngIf="client.ext =='jpg'" src="{{imagePath}}{{client.image_folder}}{{removeDollerChar(client.image_new)}}" />
+
+      <div *ngIf="client.ext =='mp4' || client.ext =='3gp'">
+          <video src="{{video(client.image)}}" class="centerme" controls="controls" >
+          </video>
+          </div>
+    <h3>{{client.message}}</h3>
+  </div> 
+  <div class="like-section">
+  <p>
+    <span>
+       <ion-icon name="checkmark-circle" (click) = "openLikePage(client.id);"></ion-icon> {{client.likes}} Likes
+    </span>
+      <span>
+       <ion-icon name="checkmark-circle"></ion-icon>
+  {{client.comment_count}} Comments
+    </span>
+  </p>
+  </div>
+ </ion-col>
+  </ion-row>
+ </ion-grid>
+</div>
+<!-- section end -->
+<!-- section satrt -->
+<div class="border-b0  like-section">
+<ion-grid>
+  <ion-row>
+  <ion-col col-9>
+   <a *ngIf="client.liked =='1'" (tap)="submit_like(-1,client.id);"><ion-icon name="heart"></ion-icon> </a>
+   <a *ngIf="client.liked =='0'" (tap)="submit_like(+1,client.id);"><ion-icon name="heart-outline"></ion-icon> </a>
+   
+    <ion-icon name="chatboxes" (click)="openCommentPage(client.id);" tappable></ion-icon>
+  </ion-col>
+  <ion-col col-3>
+   <div class="r-icon">
+   <ion-icon name="more" (click)="openposteditMenu(client.id,$event);" *ngIf="pagestatus!='tabpending'" tappable></ion-icon>
+    </div>
+  </ion-col>
+  </ion-row>
+ </ion-grid>
+</div>
+</div>
+</div>
+</div>
+</ion-content>
+

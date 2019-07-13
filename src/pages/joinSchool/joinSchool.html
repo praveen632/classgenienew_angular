@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    <div class="login-g">
+Join your school
+ <a href="">  </a>
+  </div> 
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- logo -->
+
+<!-- logo code -->
+
+<ion-content padding >
+<div class="back-c">
+<!-- content -->
+
+<!-- search code  here-->
+<div class="class-search">
+<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="getItems($event)"></ion-searchbar>
+<!-- <ion-list>
+  <ion-item *ngFor="let item of items">
+    <h3 ng-model="schoolId">{{item.school_name}}</h3> 
+     <p ng-model="schoolId">{{item.address}}</p>
+  </ion-item>
+</ion-list> -->
+</div>
+<!-- search code  here end-->
+
+<!-- add school here start-->
+<a [hidden] = "addSchoolButt"  [navPush]="addSchool">add school here</a>
+<div>
+<a [hidden] = "addSchoolButt">No record found!</a>
+</div>
+<!-- add school here end-->  
+
+
+<!-- add class-->
+<div class="content-p  m-school  add-c">
+<div class="scholl-list">
+
+<a href="">
+<ion-grid> 
+  <ion-list col-12 *ngFor="let schoolDetails of schoolList" (click)="schoolSelect(schoolDetails)">
+    <ion-item>
+     <h3 ng-model="schoolId">{{schoolDetails.school_name}}</h3> 
+     <p ng-model="schoolId">{{schoolDetails.address}}</p>
+    </ion-item>
+  </ion-list> 
+    <button ion-button (click)="teacherList()">I am not in School  </button>   
+ </ion-grid>  
+</a>
+</div>
+<!-- content end-->
+</div>
+</div>
+</ion-content>
+
+

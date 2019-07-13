@@ -1,0 +1,14 @@
+<!-- <ion-list class="edit-c" >     
+        <button ion-item (click)="close({datetoken:'today', label:'Today'})">vbdvbdf</button>
+</ion-list> -->
+    
+<ion-content >  
+    <ion-item class="edit-c">          
+        <h2 (click)="close({datetoken:'thismonth',label:'This Month'})">All Class</h2>               
+    </ion-item>  
+    <ion-list class="edit-c" *ngFor=" let item of stu_data">
+        <ion-item>          
+          <h2 (click)="close(item)">{{item.class_name}}</h2>               
+        </ion-item>
+      </ion-list>     
+    </ion-content>

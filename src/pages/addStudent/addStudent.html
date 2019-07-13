@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            <div class="login-g das">
+                Add New Student
+            </div>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<!-- logo -->
+
+<!-- logo code -->
+
+<ion-content>
+    <div class="back-c">
+        <!-- content -->
+        <div class="m-school  list-b">
+            <div class="new-border">
+                <form #formStudent="ngForm" (submit)="addStudent()">
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col col-9>
+                                <!-- text box code  here-->
+                                <ion-item>
+                                    <ion-input type="text" placeholder="Add new Student" name="name" required [(ngModel)]="item.name"></ion-input>
+                                </ion-item>
+
+                                <!--text box code here end-->
+                            </ion-col>
+                            <ion-col col-3>
+                                <button [disabled]="!formStudent.form.valid" ion-button color="orange" class="button-block  save-btn">ADD</button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </form>
+            </div>
+
+            <!--listing code here -->
+            <div class="list-margin">
+                <div class="add-c  content-p">
+                    <div>
+
+                        <ion-list *ngFor=" let student of class_studentlist">
+                            <ion-item>
+                                <ion-thumbnail item-start>
+                                    <img src="{{imageBasePath}}assets/student/{{student.image}}">
+                                </ion-thumbnail>
+                                <h2>{{student.name}}</h2>
+                            </ion-item>
+                        </ion-list>
+
+                    </div>
+                </div>
+            </div>
+            <!--listing code end -->
+        </div>
+        <!-- content end-->
+    </div>
+</ion-content>

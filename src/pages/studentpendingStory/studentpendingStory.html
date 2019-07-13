@@ -1,0 +1,140 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-icon name="arrow-back" (click)="back();" tappable></ion-icon>
+      <ion-title>
+          <div class="login-g das">
+              Class Genie
+          </div>
+      </ion-title>
+      <ion-buttons end>
+          <button ion-button menuToggle end>
+  <ion-icon name="menu" #content></ion-icon>
+</button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding >
+   
+
+    <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="doRefresh()">
+    </ion-refresher>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+  <ion-refresher-content
+    pullingIcon="arrow-dropdown"
+    pullingText="Pull to refresh..."
+    refreshingSpinner="circles"
+    refreshingText="Refreshing...">
+  </ion-refresher-content>
+</ion-refresher>
+
+
+ 
+<div class="back-c">
+  
+  <div class="m-school">
+    <div class=" invite-f  story-h">
+    <a class=""  (click)="addpost();" tappable>
+    <ion-grid>
+      <ion-row>
+      <ion-col col-9>
+        <ion-icon name="contact"></ion-icon> 
+        <h3>What's happening in your classroom?</h3>
+      </ion-col>
+      <ion-col col-3>
+       <div class="r-icon">
+       <ion-icon name="camera"></ion-icon>
+        </div>
+      </ion-col>
+      </ion-row>
+     </ion-grid>
+    </a>
+    
+    </div>
+    </div> 
+    
+  <div class="col col-100 no_post" *ngIf="showmsg==false">
+        <p style="" >No post available now..</p> 
+        </div>
+
+    <div class="clear"></div>
+     <div class="m-school" *ngFor="let client of items ; let i = index">
+      
+    <div class=" invite-f  story-h  scholl-list ">
+      <div class="border-b">
+    <ion-grid>
+      <ion-row>
+      <ion-col col-9>
+        
+         <img src="{{imgURI}}">
+        <h3>{{client.class_name}}</h3>
+         <div class="story-c">
+        <p><ion-icon name="arrow-round-forward"></ion-icon>  {{client.username}} </p>
+      </div>
+      </ion-col>
+      <ion-col col-3>
+       <div class="r-icon">
+       {{client.date}}
+      </div>
+       <div class="r-icon" *ngIf="client.status==1"><p>Approved</p></div>
+       <div class="r-icon" ng-if="client.status==0"><p>Not approved</p></div>
+        
+      </ion-col>
+      </ion-row>
+     </ion-grid>
+    </div>
+    <div class="border-b1">
+    <ion-grid>
+      <ion-row>
+      <ion-col col-12>
+      <div class="head-story">
+          <img class="full-image" *ngIf="client.ext =='jpg'" src="{{imagePath}}student_stories/client.image}}" />
+    
+          <div *ngIf="client.ext =='mp4' || client.ext =='3gp'">
+              <video src="{{video(client.image)}}" class="centerme" controls="controls" >
+              </video>
+              </div>
+        <h3>{{client.message}}</h3>
+      </div> 
+    
+     </ion-col>
+      </ion-row>
+     </ion-grid>
+    </div>
+    <!-- section end -->
+    <div class="border-b0  like-section">
+        <ion-grid>
+          <ion-row>
+          <ion-col col-9>
+          </ion-col>
+          <ion-col col-3>
+           <div class="r-icon">
+           <ion-icon name="more" (click)="openposteditMenu(client.id,$event);" *ngIf="pagestatus!='tabpending'" tappable></ion-icon>
+            </div>
+          </ion-col>
+          </ion-row>
+         </ion-grid>
+        </div>
+    <!-- section satrt -->
+   </div>
+    </div>
+    </div>
+</ion-content>
+
+<ion-menu [content]="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Class List</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list >
+        <ion-item *ngFor="let clients of mylist_data">
+         <a (click)="loadpost(clients.class_name,clients.class_id,clients.student_no);">{{clients.class_name}}</a>
+      </ion-item>
+    </ion-list>
+    </ion-content>
+  </ion-menu>

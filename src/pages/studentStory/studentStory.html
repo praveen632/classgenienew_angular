@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+          Story
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding >
+    <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="doRefresh()">
+    </ion-refresher>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+  <ion-refresher-content
+    pullingIcon="arrow-dropdown"
+    pullingText="Pull to refresh..."
+    refreshingSpinner="circles"
+    refreshingText="Refreshing...">
+  </ion-refresher-content>
+</ion-refresher>
+
+
+<ion-list>
+<div class="class-section">
+	<button ion-button class="class-btn  width-c"(click)="loadData();" tappable>Class Story</button>
+	<button ion-button outline   class="kid-btn width-c" (click)="showpendingstory();" tappable>Your Story</button>
+	<button ion-button outline   class="kid-btn width-c" (click)="showclassList_student();" tappable>My Story</button>
+</div>
+</ion-list>
+
+ 
+<div class="back-c">
+  
+    <ion-searchbar  [(ngModel)]="searchTerm" (ionInput)="getAllPostsearchStories($event)" placeholder=""></ion-searchbar>
+
+    <div class="col col-100 no_post" *ngIf="showmsg==false">
+        <p style="" >No post available now..</p> 
+        </div>
+
+    <div class="clear"></div>
+     <div class="m-school" *ngFor="let client of items ; let i = index">
+      
+    <div class=" invite-f  story-h  scholl-list ">
+      <div class="border-b">
+    <ion-grid>
+      <ion-row>
+      <ion-col col-9>
+        <img *ngIf="client.teacher_name.image!=''"  src="{{imagePath}}profile_image/{{client.teacher_name.image}}">
+         <img  *ngIf="client.teacher_name.image==''"src="/assets/imgs/chat_user.png">
+        <h3>{{client.username}}</h3>
+         <h3 *ngIf="client.teacher_name.name!=''"> {{client.teacher_name.name}}</h3>
+        <div class="story-c">
+        <p><ion-icon name="arrow-round-forward"></ion-icon>  {{client.class_name.class_name}}&nbsp;&nbsp;({{client.class_name.grade}}) </p>
+      </div>
+      </ion-col>
+      <ion-col col-3>
+       <div class="r-icon">
+       {{client.date}}
+        </div>
+      </ion-col>
+      </ion-row>
+     </ion-grid>
+    </div>
+    <div class="border-b1">
+    <ion-grid>
+      <ion-row>
+      <ion-col col-12>
+      <div class="head-story">
+          <img class="full-image" *ngIf="client.ext =='jpg'" src="{{imagePath}}{{client.image_folder}}/{{removeDollerChar(client.image_new)}}" />
+    
+          <div *ngIf="client.ext =='mp4' || client.ext =='3gp'">
+              <video src="{{video(client.image)}}" class="centerme" controls="controls" >
+              </video>
+              </div>
+        <h3>{{client.message}}</h3>
+      </div> 
+      <div class="like-section">
+      <p>
+        <span>
+           <ion-icon name="checkmark-circle" (click) = "openLikePage(client.id,client.class_id);" tappable></ion-icon> {{client.likes}} Likes
+        </span>
+          <span>
+           <ion-icon name="checkmark-circle"></ion-icon>
+      {{client.comment_count}} Comments
+        </span>
+      </p>
+      </div>
+     </ion-col>
+      </ion-row>
+     </ion-grid>
+    </div>
+    <!-- section end -->
+    <!-- section satrt -->
+    <div class="border-b0  like-section">
+    <ion-grid>
+      <ion-row>
+      <ion-col col-9>
+        <ion-icon name="heart"></ion-icon> 
+        <ion-icon name="chatboxes" (click)="openCommentPage(client.id,client.class_id);" tappable></ion-icon>
+      </ion-col>
+       </ion-row>
+     </ion-grid>
+    </div>
+    </div>
+    </div>
+    <button class="more-btn new-more" (tap)="pagging();">More</button>
+
+    </div>
+</ion-content>
+
+
+
+

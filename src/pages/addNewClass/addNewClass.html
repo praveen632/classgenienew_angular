@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    <div class="login-g">
+    Add New Class
+ <a href="">  </a>
+  </div>
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- logo -->
+
+<!-- logo code -->
+
+<ion-content padding >
+<form #formClass="ngForm" (submit)="createNewClass()">
+<div class="back-c">
+<!-- content -->
+
+<div class="add-img">
+  <img src="{{item.imagePath}}" (click)="classIconPopup()">
+</div> 
+
+<div class=" m-school  new-border  new-grid">
+
+  <ion-grid>
+    <ion-row>
+    <ion-col col-8>
+   <!-- text box code  here-->
+    <ion-item>
+   <ion-input type="text"  placeholder="Class Name" required [(ngModel)]="item.className" name="className"></ion-input>
+    </ion-item>
+
+<!--text box code here end--> 
+    </ion-col>
+  <ion-col col-4>
+    <ion-item>
+      <ion-label><span>Select Grade</span></ion-label>
+      <ion-select  name="selectGrade" required [(ngModel)]="item.selectGrade">
+      <ion-option *ngFor="let x of selectGrades" value="{{x.key}}">{{x.value}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-col>
+  </ion-row>
+ </ion-grid>
+<div>
+<button [disabled]="!formClass.form.valid" ion-button color="orange"  class="button-block  save-btn">Create new class
+</button>
+</div>
+
+</div>
+<!-- content end-->
+</div>
+</form>
+</ion-content>
+
+

@@ -1,0 +1,29 @@
+<ion-header>
+	<ion-navbar hideBackButton="true">
+		
+	  <ion-title>
+	   Select Date range
+	  </ion-title>
+	</ion-navbar>
+	
+  </ion-header>
+  
+  
+  
+  
+  <ion-content padding>
+ <div>
+	<input type="date" value={{item.startDate}} name="startDate" [(ngModel)]="item.startDate" (change)="onDateChange()">
+	<input type="date" value={{item.endDate}} name="endDate" [(ngModel)]="item.endDate" (change)="onDateChange()">
+ </div> 
+ <div class="list-school ">
+	<button ion-button color="orange" (click)="close()">
+	  Cancel
+	</button>
+	<button ion-button color="orange" (click)="submitOk()">
+	Ok
+	</button>
+	</div>
+ 
+  </ion-content>
+  

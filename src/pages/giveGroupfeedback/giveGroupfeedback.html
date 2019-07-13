@@ -1,0 +1,108 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    <div class="login-g das">
+    {{item.headerTitlePart}} 
+    </div>
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- logo -->
+
+<!-- logo code -->
+
+<ion-content padding >
+<div class="back-c">
+  <!-- tabs -->
+
+<div class="class-section  feed-top">
+  <button ion-button class="class-btn  width-c" (click)="changeTab('positive')" *ngIf="currentTab=='positive'"> 
+  Positive
+  </button>
+  <button ion-button outline   class="kid-btn width-c" (click)="changeTab('positive')" *ngIf="currentTab!='positive'"> 
+  Positive
+  </button>
+  <button ion-button outline   class="kid-btn width-c" (click)="changeTab('negative')" *ngIf="currentTab=='positive'"> 
+   Needs work
+  </button>
+  <button ion-button class="class-btn  width-c" (click)="changeTab('negative')" *ngIf="currentTab!='positive'"> 
+   Needs work
+  </button>
+</div>
+
+<!-- START || CONTAINER FOR POSITIVE FEEDBACK OPTIOPN -->
+<div *ngIf="currentTab=='positive'">
+  <ion-grid>
+   <ion-row>
+   <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 *ngFor=" let opt of optionPositive" (click)="giveReward(opt.pointweight,opt.id,opt.name,opt.image,'positive')" tappable>
+        <div class="back-change change-back  room-high  font-icon">
+          <div>
+           <div class="menu-class {{ opt.pointweight>0? 'positivePoint':opt.pointweight<0?'negativePoint':'' }}">
+           <b class="ng-binding ">{{opt.pointweight}}</b>
+           </div>
+          </div>
+          <div>
+          <img src="{{imageBasePath}}assets/skill/{{opt.image}}"> 
+          </div>
+          <p> {{opt.name}}</p>
+        </div>
+    </ion-col> 
+
+    <!-- if came from edit skills then show the add button -->
+    <ion-col width-25 *ngIf="item.editSkill">
+      <div class="back-change  change-back  room-high   plus-icon">
+        <a (click)="addSkill('positive')">  <ion-icon name="add"></ion-icon> </a> 
+      <p> Add </p>
+      </div>
+    </ion-col>
+
+    </ion-row>
+</ion-grid>
+</div>
+<!-- END || CONTAINER FOR POSITIVE FEEDBACK OPTIOPN -->
+
+
+<!-- START || CONTAINER FOR NEGATIVE FEEDBACK OPTIOPN -->
+<div *ngIf="currentTab!='positive'">
+  <ion-grid>
+   <ion-row>
+   <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 *ngFor=" let opt of optionNegative" (click)="giveReward(opt.pointweight,opt.id,opt.name,opt.image,'negative')" tappable>
+        <div class="back-change change-back  room-high  font-icon">
+          <div>
+           <div class="menu-class {{ opt.pointweight>0? 'positivePoint':opt.pointweight<0?'negativePoint':'' }}">
+           <b class="ng-binding ">{{opt.pointweight}}</b>
+           </div>
+          </div>
+          <div>
+          <img src="{{imageBasePath}}assets/skill/{{opt.image}}"> 
+          </div>
+          <p> {{opt.name}}</p>
+        </div>
+    </ion-col> 
+
+    <!-- if came from edit skills then show the add button -->
+    <ion-col width-25 *ngIf="item.editSkill">
+      <div class="back-change  change-back  room-high   plus-icon">
+        <a (click)="addSkill('negative')">  <ion-icon name="add"></ion-icon> </a> 
+      <p> Add </p>
+      </div>
+    </ion-col>
+
+    </ion-row>
+</ion-grid>
+</div>
+<!-- END || CONTAINER FOR NEGATIVE FEEDBACK OPTIOPN -->
+
+
+
+
+
+
+
+</div>
+
+
+</ion-content>
+
+

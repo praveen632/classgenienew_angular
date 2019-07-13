@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+	  <div class="login-g das">
+		Edit Class
+	  </div>
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- logo -->
+
+<!-- logo code -->
+
+<ion-content padding >
+<form #formClass="ngForm" (submit)="updateClass()">
+<div class="back-c">
+<!-- content -->
+
+<div class="add-img">
+  <img src="{{item.imagePath}}" (click)="classIconPopup()">
+</div> 
+
+<div class=" m-school  new-border  new-grid">
+
+  <ion-grid>
+    <ion-row>
+    <ion-col col-8>
+   <!-- text box code  here-->
+    <ion-item>
+   <ion-input type="text"  placeholder="Class Name" required [(ngModel)]="item.classname" name="classname"></ion-input>
+    </ion-item>
+
+<!--text box code here end--> 
+    </ion-col>
+  <ion-col col-4>
+    <ion-item>
+      <ion-label><span>Select Grade</span></ion-label>
+      <ion-select  name="selectGrade" required [(ngModel)]="item.selectGrade" value>
+      <ion-option *ngFor="let x of selectGrades" value="{{x.key}}">{{x.value}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-col>
+  </ion-row>
+ </ion-grid>
+<div>
+<button [disabled]="!formClass.form.valid" ion-button color="orange"  class="button-block  save-btn">Update class
+</button>
+</div>
+
+<div class="remove-new col-100">
+	<a class="remove_btn disable-user-behavior" (click)="removeClassCnf()">Remove class</a>
+</div>
+
+</div>
+<!-- content end-->
+</div>
+</form>
+</ion-content>
+
+

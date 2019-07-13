@@ -1,0 +1,64 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+  <div class="login-g das">
+    {{item.groupId ? 'Edit Group' : 'Add Group'}} 
+  </div>
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- logo -->
+
+<!-- logo code -->
+
+<ion-content >
+<form #addGroupForm="ngForm" (submit)="createGroup()">
+<div class="back-c">
+<!-- content -->
+<div class="m-school">
+<!--listing code here -->
+<div class="list-margin">
+<ion-list>
+<ion-item>
+    <ion-label floating>Group Name</ion-label>
+    <ion-input id="groupname" name="groupname" type="text" placeholder="Group name"  [(ngModel)]="item.groupname" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Students</ion-label>
+    <ion-input disabled id="student_list" name="student_list" type="text" placeholder="Student list"  [(ngModel)]="item.student_list" required></ion-input>
+  </ion-item>
+</ion-list>
+<div>
+<button ion-button color="orange"  class="button-block  save-btn" [disabled]="!addGroupForm.form.valid" >Save changes
+</button>
+</div>
+</div> 
+  <!--listing code end -->
+</div>
+
+<!--list-->
+<div class="content-p  add-list">
+  <div>
+<ion-list *ngFor=" let student of class_studentlist" class="{{ selectedStudent.indexOf(student.student_no) !== -1 ? ' list list-md selectedBg' : 'list list-md' }}">
+    <ion-item (click)="selectStudent(student.student_no)" tappable>
+      <ion-thumbnail item-start>
+      <img src="{{imageBasePath}}assets/student/{{student.image}}">  
+      </ion-thumbnail>
+      <h2>{{student.name}}</h2>
+    </ion-item>
+</ion-list>
+
+</div>
+</div>
+
+<!-- end-->
+
+
+<!-- content end-->
+</div>
+</form>
+</ion-content>
+
+

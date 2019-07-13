@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+            Story
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content >
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Notification</ion-label>
+      <ion-toggle [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>
+    </ion-item>
+</ion-list>
+</ion-content>
+
+

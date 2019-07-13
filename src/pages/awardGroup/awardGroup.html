@@ -1,0 +1,56 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    <div class="login-g das">
+    {{item.groupName}}     
+    <a href="#" (click)="openPopover($event)"><ion-icon name="more"></ion-icon></a>
+    </div>
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- logo -->
+
+<!-- logo code -->
+
+<ion-content padding >
+<div class="back-c">
+  <!-- tabs -->
+
+<!-- content -->
+<div>
+  <ion-grid>
+   <ion-row>
+   <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 *ngFor=" let student of studentListing">
+        <div class="back-change change-back  room-high  font-icon">
+          <div>
+           <div class="menu-class {{ student.pointweight>0? 'positivePoint':student.pointweight<0?'negativePoint':'' }}">
+           <b class="ng-binding ">{{student.pointweight}}</b>
+           </div>
+          </div>
+          <div>
+          <img src="{{imageBasePath}}assets/student/{{student.image}}"> 
+          </div>
+          <p>{{student.name}}</p>
+        </div>
+    </ion-col>    
+    </ion-row>
+</ion-grid>
+
+<!--  button code -->
+
+<div class="list-school ">
+<button   (click)="openFeedBackOption()"   ion-button color="orange"  class="button-block  save-btn list-btn">
+ Award group
+</button>
+</div>
+
+<!-- end-->
+</div>
+<!-- content end-->
+</div>
+
+
+</ion-content>
+
+

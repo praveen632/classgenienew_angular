@@ -1,0 +1,24 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    <div class="login-g">
+    Kid List
+  </div>
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding >
+
+  <ion-list>
+   <ion-item *ngFor="let client of items" (click)="showclassList_student(client.student_no,client.parent_no);"> 
+     <p> {{client.name}} ({{client.class_name}})<p>
+   <p style="display:none">{{client.student_no}}</p>
+      </ion-item>
+  </ion-list> 
+
+
+</ion-content>

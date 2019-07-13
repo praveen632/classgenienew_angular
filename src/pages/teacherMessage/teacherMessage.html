@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar >    
+    <ion-icon name="arrow-back" (click)="back();" tappable></ion-icon>
+    <ion-title>
+ {{classname}}
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content >
+<div class="back-c">
+<!-- content -->
+<div class="head-con1">
+<h3>Message</h3>
+ </div>
+
+<div class="m-school  list-b">
+<!--listing code here -->
+<div class="list-margin">
+<div class="add-c  content-p">
+
+  <div>
+  <ion-grid>
+   <ion-list>
+    <ion-item>
+      <a class="item item-avatar" href="javascript:void(0)" (click)="setParentDetailAll()" id="lnk_all_parents" >
+              <img ng-src="../assets/imgs/all_parent.png">
+              <h2>All Parents</h2>
+              <p><span></span>{{no_of_users}} parents connected</p>              
+            </a>          
+    </ion-item>
+  </ion-list>
+</ion-grid>
+</div>
+
+  <div>
+  <ion-grid>
+   <ion-list *ngFor="let details of parentDetails">
+    <ion-item>      
+              <img ng-src="../assets/imgs/chat_user.png">              
+              <h2 (click) = "setParentDetail(details.name,details.parent_ac_no)">{{details.name}}'s Parent</h2>
+              <p (click) = "inviteParents();" [hidden]="details.parent_detail !== undefined"><a>Invite parent</a></p>                    
+    </ion-item>
+  </ion-list>
+</ion-grid>
+</div>
+ 
+</div>
+</div>  
+</div>
+
+
+
+<!-- content end-->
+</div>
+</ion-content>

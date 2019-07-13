@@ -1,0 +1,6 @@
+<ion-list class="edit-c">     
+	<button ion-item (click)="getAttendanceMail('today','today')">Today</button>
+	<button ion-item (click)="getAttendanceMail('thisweek','this week')">This week</button>
+	<button ion-item (click)="getAttendanceMail('thismonth','this month')">This Month</button>
+	<button ion-item (click)="close({dateRange:1})">Date Range</button>
+</ion-list>

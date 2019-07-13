@@ -1,0 +1,43 @@
+
+<ion-header>
+  <ion-navbar>
+  	
+    <ion-title>
+      Edit Student Story
+      
+    </ion-title>
+  </ion-navbar>
+  
+</ion-header>
+
+
+
+
+<ion-content padding>
+   
+      <div class="back-c">
+     <div class="m-school  class_post">
+<div class="post-btn">
+<a (tap) ="showPopup()">Add photo or video</a>
+<img class="image_border" src="{{imgURI}}"/>
+</div>
+     
+      
+     <ion-list>
+    <ion-item>
+      	<ion-input type="text"  placeholder="What's happening in your classroom?"  [(ngModel)]="this.message" required></ion-input>
+      </ion-item>
+</ion-list>
+       <div>
+      
+          <button ion-button color="orange"  class="button-block  save-btn" (click)="savePost()" tappable>save</button>
+        </div> 
+       </div> 
+      </div>
+   
+
+
+
+
+
+</ion-content>

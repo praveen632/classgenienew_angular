@@ -1,0 +1,55 @@
+
+<ion-header>
+  <ion-navbar>
+  	
+    <ion-title>
+      Add class Story
+      
+    </ion-title>
+  </ion-navbar>
+  
+</ion-header>
+
+
+
+
+<ion-content padding>
+ <div class="back-c">
+  <form #loginForm="ngForm" (ngSubmit)="savePost()">
+      <div class="m-school  class_post">
+<div class="post-btn">
+    <div>
+<a (tap) ="showPopup()">Add photo or video
+
+<img class="image_border" src="{{imgURI}}" *ngIf="selection==1 || selection==2">
+<video src="{{videoPath}}" *ngIf="selection==3" class="centerme image_border" controls="controls" ></video></a>
+</div>
+</div>
+      
+     
+     <ion-list>
+        <ion-item>
+            {{class_name}}
+         </ion-item>
+    <ion-item>
+      	<ion-input type="text"  placeholder="What's happening in your classroom?" [(ngModel)]="item.message" name="message" required></ion-input>
+     </ion-item>
+</ion-list>
+       <div>
+          <button ion-button color="orange"  class="button-block  save-btn" [disabled]="!loginForm.form.valid">save</button>
+        </div> 
+      </div>
+<!-- button code end -->
+
+
+</form>
+</div>
+<!-- content end-->
+
+
+
+
+
+
+
+</ion-content>

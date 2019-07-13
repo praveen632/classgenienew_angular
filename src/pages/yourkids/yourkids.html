@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      <div class="login-g das">
+        Class Genie
+      </div>
+  </ion-title>
+    <ion-buttons end>
+     <a ion-button icon-only (click)="openPopover($event)">
+      <ion-icon name="more"></ion-icon>
+    </a>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+<div class="content-p  m-school  add-c">
+<h2>Your Kids</h2>
+<div class="add-c2">
+ <ion-grid>
+  <ion-row *ngFor="let branch of kidsList" (click)="openPerform(branch.student_no, branch.name)" tappable>
+    
+    <ion-col col-10><h3>{{branch.name}} </h3>
+    </ion-col>
+ </ion-row>
+ </ion-grid>
+</div>
+<div class="add-c1">
+  <a [navPush]="check_parent_code">
+  <ion-grid>
+  <ion-row>
+    <ion-col col-1>  <ion-icon name="add-circle"></ion-icon></ion-col>
+    <ion-col col-10><h3> Add New Parent Code</h3></ion-col> 
+  </ion-row>
+ </ion-grid>
+</a>
+</div>
+</div>
+</ion-content>
+

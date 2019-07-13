@@ -1,0 +1,88 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+    <div class="login-g das">
+  {{username}}
+  <br/>
+  ({{item.reportLabel}})
+ 
+    </div>
+    </ion-title>
+    </ion-navbar>
+  </ion-header>
+  <!-- logo -->
+  <!-- view report code -->
+
+  <!-- view report end -->
+  <!-- logo code -->
+  
+  <ion-content >
+
+      <div class="view-report1">
+          <ion-row>
+            <ion-col col-6 col-sm-9 col-md-6 col-lg-4 col-xl-6>
+           <div class="view-con">
+            <p (click)="openClassList($event)"><ion-icon name="list-box"></ion-icon>  All Classes </p>
+            </div>
+           </ion-col>
+              <ion-col col-6 col-sm-9 col-md-6 col-lg-4 col-xl-6>
+             <div class="view">
+            <p (click)="openPopover($event)">  <ion-icon name="calendar"></ion-icon> This Month </p>
+            </div>
+             </ion-col>
+          </ion-row>
+          </div>
+
+
+  <div class="back-c">
+  <!-- content -->
+  <!-- START || IF THERE IS DATA THEN DISPLAY THE GRAPH -->
+  <div class="list-school" *ngIf="item.graph">
+    <canvas baseChart #baseChart="base-chart" width="400" height="250"
+      [datasets]="doughnutChartData"
+      [labels]="doughnutChartLabels"
+      [colors] = "chartColors"
+      [chartType]="doughnutChartType" 
+      [options]="chartOptions" 
+      (chartHover)="chartHovered($event)"
+      (chartClick)="chartClicked($event)">  
+    </canvas>
+  </div>
+  <!-- END || IF THERE IS DATA THEN DISPLAY THE GRAPH -->
+  
+  <!-- START || IF THERE IS NO DATA THEN DISPLAY IT -->
+  <div *ngIf="item.nocontent" class="list-school ">
+      <div class="col col-100 graph_img">
+          <img src="assets/imgs/graph.png" />
+          <div class="positive_1">
+              <span>No points for current date selected</span>
+          </div>
+      </div>
+  </div>
+  <!-- END || IF THERE IS NO DATA THEN DISPLAY IT -->
+  
+  <!-- START || IF THERE IS DATA THEN DISPLAY THE LISTING -->
+  <div class="m-school" *ngIf="!item.nocontent">
+  <div class="list-margin">
+  <div class="add-c  content-p">
+  <ion-list *ngFor=" let item of reportList">
+      <ion-item>
+        <ion-thumbnail item-start>
+        <img src="{{imageBasePath}}skill/{{item.customize_detail.image}}">  
+        </ion-thumbnail>
+        <h2 *ngIf="item.point>0">+{{item.point}} for {{item.customize_detail.name}}</h2>
+        <h2 *ngIf="item.point<=0">{{item.point}} for {{item.customize_detail.name}}</h2>
+        <p>by {{item.class_name.teacher_name}}</p>
+      </ion-item>
+    </ion-list>
+  </div>
+  </div>
+  </div>
+  <!-- END || IF THERE IS DATA THEN DISPLAY THE LISTING -->
+  
+  <!-- content end-->
+  </div>
+  </ion-content>
+  
+  
+  

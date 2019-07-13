@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    <div class="login-g das">     
+      <a [navPush]="studentProfile">
+        <img src="{{imagePath}}/assets/profile_image/{{imgURI}}" />
+      </a>
+      {{username}} 
+    </div>
+  </ion-title>
+   <ion-buttons end>
+     <a ion-button icon-only (click)="openPopover($event)">
+      <ion-icon name="more"></ion-icon>
+    </a>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding >
+  <form (ngSubmit)="addStudent()" #itemForm="ngForm">
+  <div class="class-section  new-border  student-board">
+    <div class="view-report" *ngIf="unverified">    
+    <button ion-button class="class-btn  edit-btn" on-tap="shownotice()"> 
+  Invite Parent
+  <p>Invite your parent to review performance graph</p>
+  </button>
+    </div>
+    <div class="view-report" *ngIf="verified">
+      <!-- <h3>View student report </h3>
+      <p>Wednesday 01/10/2018</p> -->
+      <button ion-button class="class-btn  edit-btn" on-tap="getReport()"> 
+        View {{username}} report   
+    </button>
+      </div>      
+    <ion-item>
+   <ion-input type="text"  placeholder="Ex. SXYRF2C9Q" [(ngModel)]="item.student_no" name="student_no"></ion-input>
+    </ion-item>
+  <button ion-button class="class-btn  dash-btn" [disabled]="!itemForm.form.valid"> 
+   Submit Code
+  </button>
+  </div>
+  </form>
+
+ 
+<div class="white-back  atten-head  mar0" id="classgenie_school_list">
+  <div class="add-c  content-p">
+  <div>
+  <ion-grid>
+    <ion-row *ngFor="let detali of detalis">
+    <ion-col col-11 col-sm-9 col-md-6 col-lg-4 col-xl-11>
+     <ion-item >
+    <h2>{{ detali.name }} </h2>
+    <p> {{ detali.class_name }} </p>
+   
+     </ion-item>
+     </ion-col>  
+     <ion-col col-1 col-sm-9 col-md-6 col-lg-4 col-xl-1>
+      <div class="atten-img  text-center" on-tap="removeStudent(detali)">
+      <ion-icon name="close"></ion-icon> 
+      </div> 
+   </ion-col>    
+     </ion-row> 
+     <ion-item [hidden]="disconnected"><b>No class connected</b><br></ion-item>   
+  </ion-grid>
+  </div>
+  </div>  
+  </div>
+    <!--listing code end -->
+  
+
+
+
+</ion-content>
+

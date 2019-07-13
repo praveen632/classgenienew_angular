@@ -1,0 +1,164 @@
+<ion-header>
+  <ion-navbar >    
+    <ion-icon name="arrow-back" (click)="back();" tappable></ion-icon>
+    <ion-title>
+<div class="login-g das">
+    {{item.classname}}
+<ion-icon name="more" (click)="openheaderMenu($event);" tappable></ion-icon> 
+</div>
+</ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<div class="back-c">
+
+<div class="class-section">
+
+<button *ngIf="currentTab=='student'" ion-button class="class-btn  width-c" (tap)="openStudentTab()">
+  Students
+ </button>
+ <button *ngIf="currentTab != 'student'" ion-button outline class="kid-btn  width-c" (tap)="openStudentTab()">
+  Students
+ </button>
+
+<button *ngIf="currentTab != 'student'" ion-button class="class-btn width-c" (tap)="openGroupTab()"> 
+Groups
+</button>
+<button *ngIf="currentTab == 'student'" ion-button outline class="kid-btn width-c" (tap)="openGroupTab()"> 
+Groups
+</button>
+
+</div>
+
+<!-- content -->
+
+<!-- START FOR STUDENT TAB CONTENT -->
+<div class="class-sec" *ngIf="currentTab=='student'">
+  <ion-grid>
+   <ion-row>
+    <!-- FOR CLASS -->
+     <ion-col width-25  (click)="addClassFeedback()" tappable>
+        <div class="back-change  room-high  font-icon">
+          <div>
+         
+            <div class="menu-class {{ item.classpoint>0? 'positivePoint':item.classpoint<0?'negativePoint':'' }}">
+           <b class="ng-binding">{{item.classpoint}}</b>
+           </div>
+          </div>
+          <div>
+          <img src="{{imageBasePath}}assets/class/{{item.classimage}}"> 
+          </div>
+          <p> {{item.classname}} </p>
+        </div>
+    </ion-col>
+    <!-- FOR STUDENT LIST -->  
+     <ion-col width-25 *ngFor=" let student of class_studentlist" (click)="openPopover($event,student.id,student.student_no,student.name,student.image)" tappable>
+        <div class="back-change change-back  room-high  font-icon">
+          <div>
+           <div class="redius_cont">
+             <ion-icon name="more"></ion-icon>
+           </div>
+            <div class="menu-class {{ student.pointweight>0? 'positivePoint':student.pointweight<0?'negativePoint':'' }}">
+           <b class="ng-binding ">{{student.pointweight}}</b>
+           </div>
+          </div>
+          <div>
+          <img src="{{imageBasePath}}assets/student/{{student.image}}"> 
+          </div>
+          <p>{{student.name}} </p>
+        </div>
+    </ion-col>   
+   
+      
+     <!-- FOR ADD STUDENT ICON -->   
+   <ion-col width-25>
+  <div class="back-change  change-back  room-high   plus-icon">
+    <a [navPush]="addStudent">  <ion-icon name="add"></ion-icon> </a> 
+    <p> Add </p>
+  </div>
+  </ion-col>
+  
+   </ion-row>
+</ion-grid>
+</div>
+<!-- END FOR STUDENT TAB CONTENT -->
+
+
+<!-- START FOR GROUP TAB CONTENT -->
+<div class="class-sec" *ngIf="currentTab=='group'">
+  <ion-grid>
+   <ion-row>
+    
+    <!-- FOR GROUP LIST -->  
+     <ion-col width-25 *ngFor=" let gr of groupList" (click)="openGroupDetail(gr.id,gr.group_name)" tappable>
+        <div class="back-change change-back  room-high  font-icon">
+          <div>
+           
+          <div class="menu-class {{ gr.pointweight>0? 'positivePoint':gr.pointweight<0?'negativePoint':'' }}">
+           <b class="ng-binding ">{{gr.pointweight}}</b>
+          </div>
+          </div>
+          <div>
+            <img  src="assets/imgs/one.png" *ngIf="gr.total_no_of_student == 1">
+            <img  src="assets/imgs/two.png" *ngIf="gr.total_no_of_student == 2">
+            <img  src="assets/imgs/three.png" *ngIf="gr.total_no_of_student == 3">
+            <img  src="assets/imgs/four.png" *ngIf="gr.total_no_of_student > 3"> 
+          </div>
+          <p>{{gr.group_name}} </p>
+        </div>
+    </ion-col>   
+   
+      
+     <!-- FOR ADD GROUP ICON -->   
+   <ion-col width-25>
+  <div class="back-change  change-back  room-high   plus-icon">
+    <a [navPush]="addGroup">  <ion-icon name="add"></ion-icon> </a> 
+    <p> Add </p>
+  </div>
+  </ion-col>
+  
+   </ion-row>
+</ion-grid>
+</div>
+<!-- END FOR GROUP TAB CONTENT -->
+
+
+
+<!-- content end-->
+</div>
+
+
+</ion-content>
+
+
+
+<!-- footer code only for student tab-->
+
+<ion-footer class="foooter-section" *ngIf="currentTab=='student'">
+  <ion-toolbar>
+     <ion-grid>
+   <ion-row>
+ <ion-col col-4>
+  <div class="">
+ <a href="" [navPush]="attendence"><ion-icon name="calendar"></ion-icon>Attendance </a>
+</div>
+</ion-col>
+<ion-col col-4>
+ <div class="footer">
+ <a href="" [navPush]="awardMultiStudent"><ion-icon ios="ios-checkbox-outline" md="md-checkbox-outline"></ion-icon>Award multiple </a>
+</div>
+</ion-col>
+  <ion-col col-4>
+    <div class="footer">
+ <a href="" [navPush]="viewReport"><ion-icon ios="ios-stats" md="md-stats"></ion-icon> View Report  </a>
+</div>
+  </ion-col>
+</ion-row>
+ </ion-grid>
+  </ion-toolbar>
+</ion-footer>
+
+
+<!-- footer end -->

@@ -1,0 +1,71 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    <div class="login-g">
+Profile
+ <a href="">  </a>
+  </div>
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- logo -->
+
+<!-- logo code -->
+
+<ion-content >
+<div class="back-c">
+<!-- content -->
+<form (ngSubmit)="save()" #itemForm="ngForm">
+<div class="add-img" (click)="showPicturePopup()">
+ <a >
+<h3>Add Photo</h3>
+
+<img src={{imgURI}}>
+</a>
+</div> 
+
+<div class="m-school  new-border  profile-f">
+<h3> Account</h3>
+
+  <!-- text box code  here-->
+ 
+<ion-list>
+    <ion-item>
+ <ion-input type="text"  placeholder="name" [(ngModel)]="item.name" name="name" aria-required="true" ></ion-input>
+  </ion-item>
+   <ion-item>
+ <ion-input type="text"  placeholder="abc@gmail.com" [(ngModel)]="item.email" 
+   name="email" readonly></ion-input>
+  </ion-item>
+</ion-list>
+
+
+<div>
+<button ion-button full  color="orange"  class="button-block  save-btn">Save changes
+</button>
+</div>
+ 
+
+<!-- setting code start -->
+<div class="setting-profile">
+  <h3>Resource</h3>
+  <a (click)="changePassword()" tappable> Change Password </a>
+  <a (click)="deleteAccount()" tappable> Delete Account </a>
+  <a href=""> Terms and Conditions </a>
+  <a href=""> Privacy & Policy </a>
+  <a (click)="notificationsetting();" tappable>Notification Setting </a>
+  <a (click)="logoutTeacher()" tappable>Sign out </a>
+</div>
+
+<!-- setting end-->
+
+</div>
+</form>
+
+
+<!-- content end-->
+</div>
+</ion-content>
+
+

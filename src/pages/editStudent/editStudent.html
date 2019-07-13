@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+	  <div class="login-g das">
+		{{item.name}}
+	  </div>
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- logo -->
+
+<!-- logo code -->
+
+<ion-content>
+    <div class="back-c">
+        <!-- content -->
+        <div class="add-img">
+            <img src="{{item.imagePath}}" (click)="classIconPopup()">
+        </div> 
+        <div class="m-school  list-b">
+            <div class="new-border">
+                <form #formStudent="ngForm" (submit)="updateStudent()">
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col col-9>
+                                <!-- text box code  here-->
+                                <ion-item>
+                                    <ion-input type="text" placeholder="Add new Student" name="name" required [(ngModel)]="item.name"></ion-input>
+                                </ion-item>
+
+                                <!--text box code here end-->
+                            </ion-col>
+                            <ion-col col-3>
+                                <button [disabled]="!formStudent.form.valid" ion-button color="orange" class="button-block  save-btn">UPDATE</button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </form>
+            </div>            
+        </div>
+        <!-- content end-->
+    </div>
+</ion-content>
+
+

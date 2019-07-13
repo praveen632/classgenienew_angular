@@ -1,0 +1,52 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    <div class="login-g">
+    Login
+  </div>
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- logo -->
+
+<!-- logo code -->
+
+<ion-content padding  class="body-back1">
+<div class="logo">
+<img src="assets/imgs/logo3.png">
+</div>
+
+<form #loginForm="ngForm" (ngSubmit)="doLogin()">
+<ion-list>
+<ion-item class="login-m">
+ 
+    <ion-input type="text"  placeholder="Username" name="username" [(ngModel)]="item.username" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+  
+    <ion-input type="password"  placeholder="Password" name="password" [(ngModel)]="item.password" required></ion-input>
+  </ion-item>
+</ion-list>
+
+
+<div>
+<button ion-button color="orange"  class="button-block login0  mar45" [disabled]="!loginForm.form.valid">Log in</button>
+</div>
+<ion-grid>
+   <ion-row>
+      <ion-col width-50 >
+        <div class="forget">
+          <a [navPush]="forgotPassword">Forget password ?</a> 
+        </div>
+      </ion-col>
+      <ion-col width-50>
+      <div class="sig-up">
+        Don’t have any account ?  <a [navPush]="signup" >Signup</a>
+      </div> 
+    </ion-col>
+   </ion-row>
+</ion-grid>
+</form>
+</ion-content>

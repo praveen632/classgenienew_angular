@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    <div class="login-g">
+    REGISTER
+  </div>
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- logo -->
+
+<!-- logo code -->
+
+
+<ion-content padding  class="body-back1">
+<div class="logo">
+<img src="assets/imgs/logo3.png">
+</div>
+
+<div class="signup-g">
+Register for ClassGenie as a...
+</div>
+
+<ion-grid>
+   <ion-row>
+      <ion-col width-25 >
+        <div class="back-change">
+          <a [navPush]="teachersignup"> <img src="assets/imgs/teacher_icon.png">  </a> 
+          <p> Teacher </p>
+        </div>
+      </ion-col>
+          <ion-col width-25 >
+     <div class="back-change">
+       <a [navPush]="parentsignup"> <img src="assets/imgs/parants_icon.png">  </a> 
+         <p> Parent </p>
+      </div> 
+    </ion-col>
+      <ion-col width-25 >
+      <div class="back-change">
+      <a [navPush]="studentsignup"> <img src="assets/imgs/student_icon.png">  </a> 
+        <p> Student </p>
+      </div> 
+    </ion-col>
+      <ion-col width-25 >
+     <div class="back-change">
+       <a [navPush]="schoolleadersignup"> <img src="assets/imgs/student_icon.png">  </a> 
+       <p> School Leader </p>
+      </div> 
+    </ion-col>
+   </ion-row>
+</ion-grid>
+
+<div class="account-l">
+Already have any account  
+ <button ion-button outline item-end  class="login-btn" [navPush]="login">
+   Login
+</button>
+</div>
+
+</ion-content>
+
+
+

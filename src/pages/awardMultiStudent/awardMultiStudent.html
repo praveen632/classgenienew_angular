@@ -1,0 +1,66 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    <div class="login-g  das">
+     Award Multiple Student
+    </div>
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- header code -->
+
+<ion-content>
+<div class="back-c">
+
+<!-- content -->
+<div class="class-section">
+  <ion-grid>
+   <ion-row>
+     <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 (click)="selectAll()" tappable>
+      <div class="back-change change-back  room-high">
+         <div>
+          <img src="assets/imgs/select_all_group.png"> 
+          </div>
+          <p>{{item.selectAll ? 'Deselect All' : 'Select All'}}</p>
+      </div>
+      </ion-col>
+      <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 *ngFor=" let student of class_studentlist" (click)="selectStudent(student.id)" tappable class="{{ selectedStudent.indexOf(student.id) !== -1 ? 'selectedBg' : '' }}">
+          <div class="back-change change-back  room-high  award-margin">
+            <ion-checkbox color="positive" checked="{{ selectedStudent.indexOf(student.id) !== -1 ? true : false }}" disabled></ion-checkbox>
+            <div>           
+                <div class="menu-class {{ student.pointweight>0? 'positivePoint':student.pointweight<0?'negativePoint':'' }}">
+              <b class="ng-binding">{{student.pointweight}}</b>
+              </div>
+            </div>
+              <div>
+              <img src="{{imageBasePath}}assets/student/{{student.image}}"> 
+              </div>
+              <p>{{student.name}}</p>
+          </div>
+      </ion-col>  
+  </ion-row>
+</ion-grid>
+
+
+
+</div>
+<!-- content end-->
+</div>
+
+
+</ion-content>
+
+
+<!-- footer code -->
+
+<ion-footer class="foooter-section">
+<ion-toolbar>
+<div>
+ <button [disabled]="!item.noOfSelectedStu" (click)="awardMultiplestudents()">Give award to {{item.noOfSelectedStu}} students</button>
+</div>
+</ion-toolbar>
+</ion-footer>
+
+
+<!-- footer end -->

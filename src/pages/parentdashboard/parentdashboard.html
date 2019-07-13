@@ -1,0 +1,141 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      <div class="login-g das">
+          <a [navPush]="studentProfile">
+              <img src="{{imagePath}}profile_image/{{imgURI}}" />
+            </a>
+        Class Genie
+      </div>
+  </ion-title>
+    <ion-buttons end>
+     <a ion-button icon-only (click)="openPopover($event)">
+      <ion-icon name="more"></ion-icon>
+    </a>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+    <ion-content padding  class="body-back1">
+    <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="doRefresh()">
+    </ion-refresher>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+  <ion-refresher-content
+    pullingIcon="arrow-dropdown"
+    pullingText="Pull to refresh..."
+    refreshingSpinner="circles"
+    refreshingText="Refreshing...">
+  </ion-refresher-content>
+</ion-refresher>
+
+
+<div class="back-c">
+
+<!-- search code  here-->
+<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="getAllPostsearchStories($event)" placeholder=""></ion-searchbar>
+
+<!-- search code  here end-->
+
+<!-- tab button  here -->
+<div class="class-section">
+<button *ngIf="currentTab=='student'" ion-button class="class-btn  width-c" (tap)="openclassstory();" tappable>Class Story</button>
+
+<button *ngIf="currentTab != 'student'" ion-button outline class="kid-btn  width-c"  (tap)="openclassstory();" tappable>Class Story</button>
+
+<button *ngIf="currentTab=='kids'" ion-button class="class-btn width-c"  (tap)="showkidstory();" tappable>Kids Story</button>
+
+<button *ngIf="currentTab != 'kids'"  ion-button outline class="kid-btn width-c" (tap)="showkidstory();" tappable>Kids Story</button>
+</div>
+<!--  tab button here end-->
+
+<!-- content -->
+<div class="content-p">
+<h2>Welcome {{parentname}}</h2>
+Here you'll see updates, photos, and announcements from school.
+</div>
+
+<div class="col col-100 no_post" *ngIf="showmsg==true">
+  <p >No post available now..</p> 
+  </div>
+
+  <div class="m-school" *ngFor="let client of items ; let i = index">
+    <div class=" invite-f  story-h  scholl-list ">
+      <div class="border-b">
+    <ion-grid>
+      <ion-row>
+      <ion-col col-9>
+        <img *ngIf="!client.teacher_name.image" src="/assets/imgs/chat_user.png">
+        <img  *ngIf="client.teacher_name.image" src="{{imagePath}}profile_image/{{client.teacher_name.image}}">
+        <h3>{{client.teacher_name.name}}</h3>
+       <div class="story-c">
+        <p><ion-icon name="arrow-round-forward"></ion-icon>  {{client.class_name.class_name}}&nbsp;&nbsp;({{client.class_name.grade}}) </p>
+      </div>
+      </ion-col>
+      <ion-col col-3>
+       <div class="r-icon">
+       {{client.date}}
+        </div>
+      </ion-col>
+      </ion-row>
+     </ion-grid>
+    </div>
+    <div class="border-b1">
+    <ion-grid>
+      <ion-row>
+      <ion-col col-12>
+      <div class="head-story">
+          <img class="full-image" *ngIf="client.ext =='jpg'" src="{{imagePath}}{{client.image_folder}}/{{client.image}}" />
+    
+          <div *ngIf="client.ext =='mp4' || client.ext =='3gp'">
+              <video src="{{video(client.image)}}" class="centerme" controls="controls" >
+              </video>
+              </div>
+        <h3>{{client.message}}</h3>
+      </div> 
+      <div class="like-section">
+      <p>
+        <span>
+           <ion-icon name="checkmark-circle" (click) = "openLikePage(client.id,client.class_id);"></ion-icon> {{client.likes}} Likes
+        </span>
+          <span>
+           <ion-icon name="checkmark-circle"></ion-icon>
+      {{client.comment_count}} Comments
+        </span>
+      </p>
+      </div>
+     </ion-col>
+      </ion-row>
+     </ion-grid>
+    </div>
+    <!-- section end -->
+    <!-- section satrt -->
+    <div class="border-b0  like-section">
+    <ion-grid>
+      <ion-row>
+      <ion-col col-9>
+        <a *ngIf="client.liked =='1'" (tap)="submit_like(-1,client.id,client.class_id);"><ion-icon name="heart"></ion-icon> </a>
+        <a *ngIf="client.liked =='0'" (tap)="submit_like(+1,client.id,client.class_id);"><ion-icon name="heart-outline"></ion-icon> </a>
+
+        <ion-icon name="chatboxes" (click)="openCommentPage(client.id,client.class_name.class_name,client.class_id);" tappable></ion-icon>
+      </ion-col>
+      </ion-row>
+     </ion-grid>
+    </div>
+    </div>
+    </div>
+
+
+
+<!-- content end-->
+</div>
+
+
+
+
+
+
+
+
+</ion-content>

@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+	  <div class="login-g das">	
+	  	Add {{item.skill_type=='positive'?'Positive' : 'Needs Work'}} Skill
+	  </div>
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- logo -->
+
+<!-- logo code -->
+
+<ion-content padding >
+<form #formClass="ngForm" (submit)="addSkill()">
+<div class="back-c">
+<!-- content -->
+
+<div class="add-img">
+  <img src="{{item.imagePath}}" (click)="skillIconPopup()">
+</div> 
+
+<div class=" m-school  new-border  new-grid">
+
+  <ion-grid>
+    <ion-row>
+    <ion-col col-8>
+   <!-- text box code  here-->
+    <ion-item>
+   <ion-input type="text"  placeholder="Skill Name" required [(ngModel)]="item.skill_name" name="skill_name"></ion-input>
+    </ion-item>
+
+<!--text box code here end--> 
+    </ion-col>
+  <ion-col col-4>
+    <ion-item>
+      <ion-label><span>Select Skill Weight</span></ion-label>
+      <ion-select  name="skill_weight" required [(ngModel)]="item.skill_weight" value>
+      <ion-option *ngFor="let x of selectPointList" value="{{x.value}}">{{x.value}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-col>
+  </ion-row>
+ </ion-grid>
+<div>
+<button [disabled]="!formClass.form.valid" ion-button color="orange"  class="button-block  save-btn">Add Skill
+</button>
+</div>
+
+</div>
+<!-- content end-->
+</div>
+</form>
+</ion-content>

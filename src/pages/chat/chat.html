@@ -1,0 +1,56 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+  <div class="login-g das">
+{{Name}}
+</div>
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>  
+  
+ <!-- load code--> 
+<div [hidden] = "paginations" class="load-data" >
+  <a (click) = "loadPrevious()">Load previous data</a>  
+</div>
+  <!-- load code-->
+  <div *ngFor="let details of user_details.reverse(); "> 
+   <span [ngClass]="(details.sender_ac_no != sender_ac_no) ? 'chat-msg new_chat left-chat' : 'chat-msg new_chat'">
+  <div class="chat-message" [innerHtml] = "details.message">
+    {{details.message}}
+  </div>
+<ion-icon name="close" [hidden]="details.sender_ac_no !== sender_ac_no" (click) = "removeChat(details.id,details.message,details.receiver_ac_no)"></ion-icon>
+<div class="chat-message">
+ {{details.sender_name}} ,
+ <span>{{details.created_at | amTimeAgo}}</span>
+</div>
+</span>
+</div>
+
+</ion-content>
+<!-- footer code -->
+
+<ion-footer ion-fixed class="foooter-section top-chat">  
+<ion-toolbar>
+    <form #loginForm="ngForm" (ngSubmit)="_sendMessage()">
+ <span> 
+<ion-icon name="camera" (click)="showPicturePopup()"></ion-icon>
+<ion-icon name="happy" (click)="showEmotionList()"></ion-icon>
+<ion-input type="text" [(ngModel)]="item.message" name="message" placeholder="Type your message" required ></ion-input>
+</span>
+
+<button ion-button outline item-end  class="border-n" [disabled]="!loginForm.form.valid" >
+ <ion-icon name="send"></ion-icon>
+</button>
+</form>
+</ion-toolbar>
+</ion-footer>
+
+
+
+<!-- footer end -->
+
+

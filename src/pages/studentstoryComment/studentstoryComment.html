@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Class Genie
+       
+    </ion-title>
+
+  </ion-navbar>
+
+
+</ion-header>
+
+
+<ion-content padding>
+ 
+<div class="back-c">
+
+<!-- post section -->
+<div class="comment-s">
+
+
+<div class=" invite-f  story-h1">
+<div class="border-b">
+ <ion-list>
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="{{imageurl}}">  
+      </ion-thumbnail>
+      <h2>{{teacher_name}}</h2>
+      <p><ion-icon name="arrow-round-forward"></ion-icon>  {{nameOfClass}}  </p>
+    </ion-item>
+  </ion-list>
+</div>
+<div class="border-b1">
+  <div class="head-story">
+    <h2>{{message}}</h2>
+  </div>
+  <div class="like-section1">
+   <ion-list>
+    <ion-item>
+      <ion-thumbnail item-start>
+        <span>
+       <ion-icon name="checkmark-circle"></ion-icon> {{like}}  Likes
+       </span> 
+      </ion-thumbnail>
+       <ion-thumbnail item-start>
+        <span>
+          <ion-icon name="checkmark-circle"></ion-icon> {{commentCount}} Comments
+       </span> 
+      </ion-thumbnail>
+    </ion-item>
+  </ion-list>
+</div>
+</div>
+<!-- section end -->
+<!-- section satrt -->
+<div class="border-b0  like-section">
+
+</div>
+
+
+<!-- below section start-->
+<div class="border-class">
+<div class="like-section1">
+ <ion-grid  *ngFor="let item of items">
+ <ion-row>
+ <ion-col col-10>
+ <ion-list>
+    <ion-item>
+      <ion-thumbnail item-start>
+         <img  src="assets/imgs/chat_user.png" class="user_right" *ngIf="item.name.image==''">
+         </ion-thumbnail>
+      <h2> <span class="user_neme_comment" *ngIf="item.name.name!=''">{{item.name.name}}</span>
+      <span class="user_neme_comment" *ngIf="item.name.name==''">{{item.student_name}}</span> </h2>
+      <p> {{item.comment}}  </p>
+     </ion-item>
+  </ion-list>
+</ion-col>
+ </ion-row>
+</ion-grid>
+
+</div>
+</div>
+<!-- below section end-->
+</div>
+ </div> 
+
+</div>
+
+</ion-content>
+
+<ion-footer class="foooter-section  class-s">
+  <form #loginForm="ngForm" (ngSubmit)="saveComment()">
+  <ion-toolbar>
+   <div>
+  <ion-list>
+    <ion-item>
+    <ion-input type="text"  placeholder="Add Your Comment" [(ngModel)]="item.comment" name="message" required ></ion-input>
+    </ion-item>
+   </ion-list>
+   </div>
+   <div>
+   <button   ion-button outline item-end  class="btn-invite1" [disabled]="!loginForm.form.valid">
+  <ion-icon ios="ios-send" md="md-send"></ion-icon>
+  </button> 
+   </div>
+  </ion-toolbar>
+</form>
+</ion-footer>
+

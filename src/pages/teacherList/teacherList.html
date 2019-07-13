@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+  <div class="login-g das">
+Teacher  list
+ 
+  </div>
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- logo -->
+
+<!-- logo code -->
+<ion-content >
+<div class="back-c">
+<!-- content -->
+<div class="white-back">
+ <!--listing code here -->
+<div class="add-c  list-c">
+  <div>
+<ion-list *ngFor=" let item of items">
+    <ion-item>
+      <ion-thumbnail item-start>
+      <img src="{{imageBasePath}}/assets/profile_image/{{item.image}}" *ngIf="item.image">
+    <img src="assets/imgs/chat_user.png" *ngIf="!item.image">
+      </ion-thumbnail>
+      <h2>{{item.name}}</h2>
+      <p>{{item.email}}</p>
+      <div class="btn-as">
+    <button ion-button outline item-end  class="send-btn" *ngIf="item.status == 0" (click)="approoveTeacherCnf(item.member_no)">  <ion-icon name="time"></ion-icon> Pending</button>
+      <button ion-button outline item-end  class="approved-btn" *ngIf="item.status == 1"> <ion-icon name="checkmark"></ion-icon> Approved</button>
+      <button ion-button outline item-end  class="Delete-btn" (click)="removeTeacherCnf(item.member_no)"> <ion-icon name="trash"></ion-icon> Delete</button>
+      </div>
+    </ion-item>
+</ion-list>
+</div>
+</div>
+
+  <!--listing code end -->
+</div> 
+
+
+<!-- more button -->
+<div class="list-school ">
+<button ion-button color="orange"  class="button-block  save-btn list-btn" (tap)="pagging()" *ngIf="loadMore">
+  More
+ </button>
+</div>
+<!-- more button  end -->
+
+
+
+<!-- content end-->
+</div>
+</ion-content>

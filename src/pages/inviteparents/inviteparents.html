@@ -1,0 +1,45 @@
+
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    Invite Parent
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+<div class="back-c">
+<div class=" new-border  invite-p">
+<h3>You've connected {{connected}} of {{totalstudent}} parents</h3> 
+<div class="progress_bar meter">
+<div class="prog"></div>
+</div>
+<br/> 
+<button ion-button color="orange"  class="button-block  save-btn  invite-btn" (click)="generateInvitationPdf()" tappable>
+            Download and print all invites
+          </button>
+<br/> 
+</div>
+
+<div class="content-p  m-school  add-c  invite-mar">
+<div class="scholl-list  invite-f  border-b">
+<ion-grid>
+  <ion-row *ngFor="let item of items">
+  <ion-col col-9><img src="assets/imgs/school_icon.png"><h3>{{item.name}} </h3></ion-col>
+  <ion-col col-3>
+  <button ion-button outline item-end  class="btn-invite" (click) ="inviteParent(item.id,item.student_no,item.parent_no,item.name)"  *ngIf="item.request_status=='0'" tappable>Invite</button></ion-col>
+   <ion-col col-3><button ion-button outline item-end  class="btn-invite"  (click) ="inviteParent(item.id,item.student_no,item.parent_no,item.name)" *ngIf="item.request_status=='-1'" tappable>Invited</button></ion-col>
+  <ion-col col-3><button ion-button outline item-end  class="btn-invite" *ngIf="item.request_status=='1'" style="display:none">Invite</button></ion-col>
+</ion-row>
+ </ion-grid>
+</div>
+</div>
+</div>
+</ion-content>
+
+
+
+

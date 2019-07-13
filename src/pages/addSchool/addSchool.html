@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    <div class="login-g">
+      Add school
+  </div>
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- logo -->
+
+<!-- logo code -->
+
+<ion-content padding >
+<div class="back-c">
+<!-- content -->
+
+
+<!-- add class-->
+<div class="content-p  m-school  add-c">
+<form #formAddSchool="ngForm" (submit)="saveschool()">
+<ion-list>
+<ion-item>
+<ion-input type="text"  placeholder="School Name" name="schoolname" [(ngModel)]="school.schoolname" required></ion-input>
+</ion-item>
+<ion-item>
+ <ion-input type="text"  placeholder="Address of school" name="address" [(ngModel)]="school.address" required></ion-input>
+  </ion-item>
+  <ion-item>
+<ion-input type="text"  placeholder="City or town" name="city" [(ngModel)]="school.city" required></ion-input>
+  </ion-item>
+  <ion-item>
+<ion-input type="text"  placeholder="State or province" name="state" [(ngModel)]="school.state" required></ion-input>
+  </ion-item>
+  <ion-item>
+<ion-input type="text"  placeholder="Country" name="country" [(ngModel)]="school.country" required></ion-input>
+  </ion-item>
+    <ion-item>
+<ion-input type="number"  placeholder="Pin Code" name="pin" [(ngModel)]="school.pin" required></ion-input>
+  </ion-item>
+    <ion-item>
+<ion-input type="number"  placeholder="Phone" name="phone" [(ngModel)]="school.phone" required></ion-input>
+  </ion-item>
+    <ion-item>
+<ion-input type="email"  placeholder="Email" name="email" [(ngModel)]="school.email" required></ion-input>
+  </ion-item>
+      <ion-item>
+<ion-input type="text"  placeholder="School Website" name="site" [(ngModel)]="school.site" ></ion-input>
+  </ion-item>
+
+</ion-list>
+<div>
+<button ion-button color="orange"  class="button-block  save-btn" [disabled]="!formAddSchool.form.valid">Save School
+</button>
+</div>
+</form>
+</div>
+<!-- add class  end-->
+
+
+
+<!-- content end-->
+</div>
+</ion-content>
+
+

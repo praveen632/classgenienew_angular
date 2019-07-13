@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    Parent Code Check
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+  
+<ion-content padding  class="body-back1">
+
+
+	<form (ngSubmit)="checkparentcode()" #itemForm="ngForm">
+  
+
+
+<ion-list>
+<ion-item>
+ <ion-input type="text"  placeholder="ex.P123456" [(ngModel)]="item.parent_no" name="parent_no" ></ion-input>
+</ion-item>
+</ion-list>
+
+ 
+
+<div>
+ <button type="submit" ion-button color="orange"  class="button-block login0 mar45" [disabled]="!itemForm.form.valid">Check parents code</button>
+</div>
+</form>
+
+</ion-content>
+

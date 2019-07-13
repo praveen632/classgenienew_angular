@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    <div class="login-g">
+    STUDENT  INVITE
+  </div>
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- logo -->
+
+<!-- logo code -->
+
+<ion-content padding  class="body-back1">
+<div class="logo">
+<img src="assets/imgs/logo3.png">
+</div>
+
+
+<form (ngSubmit)="saveStudent()" #itemForm="ngForm">
+<ion-list>
+<ion-item>
+ 
+    <ion-input type="text"  placeholder="ex.S123456" [(ngModel)]="item.student_no" name="student_no"></ion-input>
+  </ion-item>
+</ion-list>
+
+
+<div>
+<button [navPush]="studentsignupnew" ion-button color="orange"  class="button-block login0  mar45"  [disabled]="!itemForm.form.valid">Check student code
+</button>
+</div>
+
+</form>
+
+<div class="account-l">
+Already have any account ? 
+ <button ion-button outline item-end  class="login-btn">
+    <a [navPush]="login">Login  </a> 
+</button>
+</div>
+
+</ion-content>
+
+
+

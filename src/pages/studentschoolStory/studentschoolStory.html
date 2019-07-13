@@ -1,0 +1,78 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+        {{school_name}}
+      
+    </ion-title>
+
+  </ion-navbar>
+
+
+</ion-header>
+
+
+<ion-content>
+
+  
+<div class="back-c">
+
+<div class="clear"></div>
+
+<div class="col col-100 no_post" *ngIf="showmsg==true">
+   <p style="" >No post available now..</p> 
+   </div>
+
+<div class="m-school" *ngFor="let client of items ; let i = index">
+  
+<div class=" invite-f  story-h  scholl-list ">
+  <div class="border-b">
+<ion-grid>
+  <ion-row>
+  <ion-col col-9>
+    <img src="/assets/imgs/status_profile.png">
+    <h3>{{name}}</h3>
+      <div class="story-c">
+    <p><ion-icon name="arrow-round-forward"></ion-icon>{{school_name}}</p>
+     <p><ion-icon name="arrow-round-forward"></ion-icon>({{client.teacher_name}}) </p>
+  </div>
+  </ion-col>
+  <ion-col col-3>
+   <div class="r-icon">
+   {{client.date}}
+    </div>
+  </ion-col>
+  </ion-row>
+ </ion-grid>
+</div>
+<div class="border-b1">
+<ion-grid>
+  <ion-row>
+  <ion-col col-12>
+  <div class="head-story">
+      <div *ngIf="client.ext =='jpg'">
+          <img class="full-image" src="{{imagePath}}school_stories/{{removeDollerChar(client.image_new)}}" >
+       </div>
+       <div *ngIf="client.ext =='mp4' || client.ext =='3gp'">
+          <video src="{{video(client.image)}}" class="centerme" controls="controls" ></video>
+          </div>
+    <h3>{{client.message}}</h3>
+  </div>
+ </ion-col>
+  </ion-row>
+ </ion-grid>
+</div>
+<!-- section end -->
+<!-- section satrt -->
+</div>
+
+
+</div>
+<div class="clearfix"></div>
+      
+      <button class="more-btn" (click)="paging();"  *ngIf="postCount>=10" tappable>More</button>
+
+</div>
+</ion-content>
+
+

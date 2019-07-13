@@ -1,0 +1,60 @@
+<!-- logo -->
+<ion-header>
+  <ion-navbar >
+    <ion-icon name="arrow-back" (click)="back();" tappable></ion-icon>
+    <ion-title>
+  {{classname}}
+  </ion-title>
+  
+  </ion-navbar>
+</ion-header>
+<!-- logo code -->
+
+<ion-content padding>
+  <div class="back-c  search-c">
+
+  <div class="head-con">
+<h3>Student's List</h3>
+ </div>
+
+<!-- content -->
+<div class="m-school  mar-t">
+
+<!--listing code here -->
+<div class="list-margin">
+<div class="add-c  content-p">
+<div>
+
+          <a (click) ="allClassStory();" tappable>
+            <ion-list>
+                <ion-item>
+                  <ion-thumbnail item-start>
+                    <img src="assets/imgs/school_icon.png">  
+                       </ion-thumbnail>
+          
+            <h2>Whole Class Story</h2>
+           </ion-item>
+  </ion-list> 
+          </a>
+
+  <ion-list>
+    <ion-item *ngFor="let studentItem of studentList" (click) ="openClassStory(studentItem.parent_ac_no,studentItem.student_no);" tappable>
+      <ion-thumbnail item-start>
+      <img src="{{imagePath}}class/{{studentItem.image}}">  
+      </ion-thumbnail>
+          <h2>{{studentItem.name}}</h2>
+
+
+          <a>
+            <span *ngIf="studentItem.parent_ac_no=='0'" (tap)="openInviteparents();" tappable> Invite parent</span></a>
+         </ion-item>
+      </ion-list>
+       </div>
+        </div>
+              </div>
+             
+         </div>
+      </div>
+</ion-content>
+
+ 

@@ -1,0 +1,18 @@
+
+<ion-header>
+  <ion-navbar hideBackButton="true">
+  	
+    <ion-title>
+     Choose Skill Icon      
+    </ion-title>
+  </ion-navbar>
+  
+</ion-header>
+
+
+
+
+<ion-content padding>
+
+<img *ngFor="let x of iconList" src={{iconImageBase}}{{x.image}} (tap)="setImage(x.image)"  name="add_class_user" />
+</ion-content>

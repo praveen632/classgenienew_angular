@@ -1,0 +1,112 @@
+
+<ion-header>
+  <ion-navbar hideBackButton>
+
+    <ion-title>
+    <div class="login-g das">
+     Classgenie 
+    <a [navPush]="profile">
+      <img src="{{imagePath}}/assets/profile_image/{{imgURI}}" />
+    </a>
+  </div>
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- logo -->
+
+<!-- logo code -->
+
+<ion-content padding >
+  <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+      </ion-refresher>
+      <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh..."
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+<div class="back-c">
+<!-- content -->
+
+
+
+        
+<div class="content-p  m-school">
+<h2>Your School</h2>
+<a (tap)="schoolinfo()">
+<ion-grid>
+  <ion-row>
+    <ion-col col-1 ><img src="assets/imgs/school_icon.png"> </ion-col>
+        <ion-col col-10>
+          <h3>{{school.school_name}}</h3>
+          <p>{{subTitle}}</p>
+        </ion-col>
+  </ion-row>
+ </ion-grid>
+
+</a>
+</div>
+<!-- add class-->
+<div class="content-p  m-school  add-c">
+<h2>Your Class</h2>
+<div class="add-c2">
+
+<ion-grid>
+  <ion-row  *ngFor="let classItem of classList"  
+            (tap)="openClassDetail(classItem.class_id,classItem.class_name,classItem.image,classItem.grade,classItem.pointweight)">
+    <ion-col col-1>
+       <img src="{{imagePath}}assets/class/{{classItem.image}}" />     </ion-col>
+        <ion-col col-10><h3>{{classItem.class_name}} </h3>
+          <h4 style="display:none">{{classItem.class_name}} </h4>
+        </ion-col>
+  </ion-row>
+ </ion-grid>
+
+</div>
+
+
+<div class="add-c1">
+<a [navPush]="addNewClass">
+<ion-grid>
+  <ion-row>
+    <ion-col col-1>  <ion-icon name="add-circle"></ion-icon> </ion-col>
+        <ion-col col-10><h3> Add a new class</h3></ion-col>
+  </ion-row>
+ </ion-grid>
+</a>
+</div>
+</div>
+<!-- add class  end-->
+<div class="content-p  m-school ">
+<h2>Next steps</h2>
+<a [navPush]="referTeacher">
+<ion-grid>
+  <ion-row>
+    <ion-col col-1><img src="assets/imgs/refer_teacher.png">   </ion-col>
+        <ion-col col-10><h3> Refer a teacher </h3>
+    <p>introduce classgenie</p></ion-col>
+  </ion-row>
+ </ion-grid>
+</a>
+<br/>
+
+<div class="add-c1">
+<a [navPush]="eventManagement">
+<ion-grid>
+  <ion-row>
+    <ion-col col-1><img src="assets/imgs/event_management.png">     </ion-col>
+        <ion-col col-10><h3> Event management </h3></ion-col>
+  </ion-row>
+ </ion-grid>
+</a>
+</div>
+</div>
+
+
+<!-- content end-->
+</div>
+</ion-content>

@@ -1,0 +1,87 @@
+
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+    <div class="login-g das">
+  Take Attendance
+   <a  href="javascript:void(0)" (click)="openPopover($event)" tappable>Get Attendance</a>
+   </div>
+    </ion-title>
+    </ion-navbar>
+  </ion-header>
+  <!-- header -->
+  
+  <ion-content >
+  <div class="back-c">
+  <!-- calender code -->
+  <div class="top-back">
+  <ion-item>
+  <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+  <input type="date" value={{item.currentDate}} name="currentDate" [(ngModel)]="item.currentDate" (change)="studentAttendance()">
+  </ion-item>
+  </div>
+  <!-- calender code  end-->
+  
+  <!-- select code -->
+  <div class="atten-select   new-grid">
+    <ion-item>
+          <ion-label><span>Attendance</span></ion-label>
+          <ion-select (ionChange)="changeAttendanceForAll($event)" name="attendanceAll">
+          <ion-option value="P">Mark All Present</ion-option>
+          <ion-option value="A">Mark All Absent</ion-option>
+          <ion-option value="H">Mark Holiday</ion-option>
+      </ion-select>
+    </ion-item>
+  </div>
+  <!-- select code  end-->
+  
+  
+  <!-- listing code -->
+  <div class="white-back  atten-head">
+  <div>
+  <div class="add-c  content-p">
+  <div>
+  <ion-grid>
+    <ion-row  *ngFor=" let student of class_studentlist">
+    <ion-col col-9 col-sm-9 col-md-6 col-lg-4 col-xl-11>
+     <ion-item>
+     <ion-thumbnail item-start>
+     <img src="{{imageBasePath}}assets/student/{{student.image}}">  
+     </ion-thumbnail>
+     <h2>{{student.name}}</h2>
+     </ion-item>
+     </ion-col>
+      <ion-col col-3 col-sm-9 col-md-6 col-lg-4 col-xl-1>
+        
+        <div class="atten-img">
+        <img src="assets/imgs/attendance_na.png" *ngIf="selectedStudent[student.student_no[0].student_no]=='NA' || selectedStudent[student.student_no[0].student_no]=='H' || selectedStudent[student.student_no[0].student_no]=='' " (click)="changeAttendance(student.student_no[0].student_no)" tappable>
+        <img src="assets/imgs/attendance_l.png" *ngIf="selectedStudent[student.student_no[0].student_no]=='L'" (click)="changeAttendance(student.student_no[0].student_no)" tappable>
+        <img src="assets/imgs/attendance_a.png" *ngIf="selectedStudent[student.student_no[0].student_no]=='A'" (click)="changeAttendance(student.student_no[0].student_no)" tappable>
+        <img src="assets/imgs/attendance_p.png" *ngIf="selectedStudent[student.student_no[0].student_no]=='P'" (click)="changeAttendance(student.student_no[0].student_no)" tappable> 
+        </div> 
+        
+     </ion-col>
+     </ion-row>    
+  </ion-grid>
+  </div>
+  </div>
+  </div> 
+  </div>
+    <!--listing code end -->
+  
+  <!--  button -->
+  <div class="list-school ">
+  <button ion-button color="orange"  class="reset_btn" *ngIf="item.displayResetBtn" (click)="resetAttendence()">
+    Reset
+  </button>
+  <button ion-button color="orange"  class="save-btn  save-atten" (click)="saveAttendance()">
+  Save attendance
+  </button>
+  </div>
+  <!-- button  end -->
+  
+  </div>
+  </ion-content>
+  
+  
+  

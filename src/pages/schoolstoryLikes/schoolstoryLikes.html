@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Likes
+       
+    </ion-title>
+
+  </ion-navbar>
+
+
+</ion-header>
+
+
+<ion-content padding>
+
+   <div class="list add-student">
+          <ion-list id="student_list">
+            <ion-item class="item-avatar" *ngFor="let item of like_list_items">            >
+            <img src="{{imagePath}}profile_image/{{item.name.image}}?{{randno}}" *ngIf="item.name.image!==''"/> 
+            <img ng-src="img/chat_user.png" ng-if="item.name.image==''" /> 
+            <h2 ng-model="className" class="class_name_heading" *ngIf="item.name!=''">{{item.name.name}} </h2>
+            <h2 ng-model="className" class="class_name_heading" *ngIf="item.student_name!=''">{{item.student_name}} </h2>
+            </ion-item>
+          </ion-list>
+      </div>
+ 
+</ion-content>
+
