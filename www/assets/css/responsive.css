@@ -1,0 +1,189 @@
+/*  responsive */
+
+
+
+@media only screen and (max-width:768px) {
+    .add-c2 .col h3 {
+    font-size: 14px;
+}
+
+.forget  {
+   text-align:center;
+}
+.col {
+   
+    -webkit-flex-basis: auto;
+
+}
+.sig-up {
+    text-align: center;
+}
+.sig-up a {
+    padding:0px; 
+}
+.logo img {
+    display: block;
+    margin: 0 auto;
+    width:25%;
+}
+.width-c  {width:40%;}
+.m-school img {
+            width: 100%;
+}
+.m-school .icon {
+        font-size: 90px;
+
+   
+}
+.m-school {
+    margin: 17px 0px;
+ 
+}
+.m-school [col-1] {
+    -webkit-flex-basis: auto;
+       width: 20%;
+    max-width: 20%;
+}
+.m-school [col-10] {
+    -webkit-flex-basis: auto;
+       width: 80%;
+    max-width: 80%;
+}
+.add-c  h3 {margin-top:30px;}
+.new-grid [col-8]  {
+width:100%;
+max-width: 100%;
+}
+.new-grid [col-4]  {
+width:100%;
+max-width: 100%;
+}
+.invite-f img {
+    width: 25%;
+}
+.invite-f h3 {
+    margin-top: 0px !important;
+    padding: 0px 7px;
+    top: 25px;
+    position: absolute;
+    display: inline;
+}
+.invite-f {
+    margin: 17px 0px;
+    padding: 0px;
+}
+.invite-btn {
+    width: 90%;
+  }
+  .invite-p h3 {
+    font-size: 17px;
+}
+.add-c .add-c1 .col h3 {
+    margin-top: 20px;
+}
+.list-img img {
+    width: 25%;
+}
+.story-h {
+  margin:0px;
+}  
+.das a {
+   padding: 0px; 
+}
+.mar0 {margin:0px;}
+.story-h .icon {
+    font-size: 30px;
+}
+.story-h h3 {
+    top: 12px;
+    font-size: 14px;
+    padding: 0px 20px;
+}
+.story-c .icon {
+    font-size: 18px;
+    padding: 0px;
+    color: #888;
+    padding-right: 10px;
+}
+.head-story h3 {
+    display: block;
+    position: static;
+    color: #7d7d7d;
+    padding: 0px;
+    padding: 0px 7px;
+}
+.like-section .icon {
+    font-size: 22px;
+  }
+ 
+.border-b  [col-9]  {
+    width:100%;
+    max-width:100%;
+
+}
+.border-b  [col-3]  {
+    width:100%;
+    max-width:100%;
+
+}
+.top-margin {margin-top:20px;}
+.border-b img {
+    width: 11%;
+}
+.add-img {
+    width: 80%;
+   padding: 11px 0px 1px 0px;
+   }
+   .add-list img {
+    width: 15%;
+}
+.foooter-section .icon {
+    padding: 0px 2px;
+    display: block;
+}
+.post-btn {
+  width: 80%;
+  margin-bottom: 40px;
+}
+.comment-s  {margin:10px 0px;}
+.story-h1 {
+ padding: 10px;
+}
+.white-back {
+    margin: 10px 0px;
+}
+.add-list {
+   padding:0px; 
+
+}
+.list-btn {
+    width: 80%;
+    margin: 30px auto;
+}
+.top-chat input {
+    width: 64%;
+    display: inline;
+}
+.top-chat  .icon {
+    padding: 0px 2px;
+    display: inline;
+}
+.class-s  input {
+    width: 75%;
+    display: inline;
+}
+}
+
+
+@media only screen and (max-width:480px) {
+	.logo img {
+    display: block;
+    margin: 0 auto;
+    width:25%;
+}
+.list-md {
+     padding: 0px !important; 
+}
+
+
+	}
